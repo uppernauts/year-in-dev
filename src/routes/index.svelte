@@ -14,12 +14,12 @@
 		}
 	}
 </script>
-<div class="min-h-screen flex flex-col items-center justify-center text-white">
-  <h1 class="text-5xl mb-6">Your year in DEV</h1>
+<div class="min-h-screen flex flex-col items-center justify-center">
+  <h1 class="text-5xl mb-6 text-white">Your year in DEV</h1>
   <div class="max-w-xl w-full bg-gray-800 p-6 rounded mb-16">
     <input type="text" on:keypress={stats} class="w-full p-2 rounded text-xl text-center" placeholder="Enter your DEV username" />
   </div>
-  <div class="text-lg text-center">
+  <div class="text-lg text-center text-white">
 	<p>Built with <i class="far fa-heart mx-2 text-red-500" /> by</p>
 	<p class="mb-8">
 		<a class="text-blue-500 mx-2" target="_blank" href="https://dev.to/maurogarcia_19">Mauro García</a> and <a target="_blank" class="text-blue-500 mx-2" href="https://dev.to/paulasantamaria">Paula Santamaría</a>
