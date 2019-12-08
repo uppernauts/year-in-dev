@@ -2,11 +2,13 @@
   <title>Your year in DEV</title>
 </svelte:head>
 <script>
+	import { goto } from '@sapper/app';
+
 	function stats(event) {
 		if(event.keyCode == 13) {
 			const username = event.currentTarget.value
 			if(username.trim().length > 0) {
-				window.location = `/stats/${username}`
+				goto(`/stats/${username}`)
 			}
 		}
 	}
