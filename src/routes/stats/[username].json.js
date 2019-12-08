@@ -4,17 +4,16 @@ export async function get(req, res, next) {
     const { username } = req.params;
 
     try {
-        const articles = await getArticles(username);
+        const articles = await getArticles(username, 2019);
 
         const stats = {
             totalArticles: articles.length,
             user: getUserData(username, articles),
             totalComments: countComments(articles),
             totalReactions: countReactions(articles),
-            mostUsedTags: getMostUsedTags(articles)
-        }
-
-        console.log(stats);
+            mostUsedTags: getMostUsedTags(articles),
+            mostLikedArticle: getMostLikedArticle(articles)
+        };
 
         res.writeHead(200, {
             'Content-Type': 'application/json'
@@ -34,6 +33,12 @@ export async function get(req, res, next) {
     }
 }
 
+/**
+ * Get the user data from the first item article's array.
+ * If the user didn't write any articles, return only the username.
+ * @param {string} username 
+ * @param {any[]} articles 
+ */
 const getUserData = (username, articles) => {
     if (articles.length == 0) {
         return {
@@ -44,18 +49,30 @@ const getUserData = (username, articles) => {
     return articles[0].user;
 }
 
+/**
+ * Count the comments from every article.
+ * @param {any[]} articles 
+ */
 const countComments = (articles) => {
     return articles
         .map(a => a.comments_count)
         .reduce((sum, val) => sum + val, 0);
 }
 
+/**
+ * Count the reactions from every article.
+ * @param {any[]} articles 
+ */
 const countReactions = (articles) => {
     return articles
         .map(a => a.positive_reactions_count)
         .reduce((sum, val) => sum + val, 0);
 }
 
+/**
+ * Get the 3 most used tags.
+ * @param {any[]} articles 
+ */
 const getMostUsedTags = (articles) => {
     const mapTags = articles
         .map(a => a.tag_list);
@@ -76,4 +93,17 @@ const getMostUsedTags = (articles) => {
         .sort((tagA, tagB) => tagB.countTag - tagA.countTag)
         .slice(0, 3)
         .map(t => t.tag);
+}
+
+/**
+ * Get the article with the most positive reactions.
+ * @param {any[]} articles 
+ */
+const getMostLikedArticle = (articles) => {
+    if (articles.length == 0)
+        return null;
+
+    return articles
+        .sort((articleA, articleB) => articleB.positive_reactions_count - articleA.positive_reactions_count)
+    [0];
 }

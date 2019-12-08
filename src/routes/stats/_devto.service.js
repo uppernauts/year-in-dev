@@ -1,13 +1,22 @@
 const request = require("request-promise");
 
-export const getArticles = async (username) => {
+/**
+ * Get the articles written by a DEV user during the specified year.
+ * @param {string} username 
+ * @param {number} year 
+ */
+export const getArticles = async (username, year) => {
 
     const apiURL = `https://dev.to/api/articles?username=${username}&state=all`;
 
     try {
         const articles = await request.get(apiURL);
 
-        return JSON.parse(articles);
+        return JSON.parse(articles)
+            .filter((a) => {
+                const createdAt = new Date(a.created_at);
+                return createdAt.getFullYear() == year;
+            });
     }
     catch (err) {
         let handledErr = new Error();
