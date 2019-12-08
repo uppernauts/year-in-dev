@@ -32,7 +32,7 @@
 </svelte:head>
 
 <div
-    class="flex flex-col h-screen justify-center items-center text-white w-1/2
+    class="flex flex-col min-h-screen justify-center items-center text-white w-1/2
     mx-auto">
 	<span class="text-6xl"><i class="fas fa-exclamation-triangle mb-4" /> {status}</span>
     
