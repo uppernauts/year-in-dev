@@ -4,8 +4,6 @@
 	export let segment;
 </script>
 
-<Nav {segment}/>
-
-<main class="lg:mt-20 container mx-auto p-4">
+<main class="container mx-auto p-4">
 	<slot></slot>
 </main>

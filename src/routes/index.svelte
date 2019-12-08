@@ -1,12 +1,19 @@
 <svelte:head>
-	<title>Sapper project template</title>
+  <title>Your year in DEV</title>
 </svelte:head>
-
-<h1 class="text-center text-2xl my-4">Great success!</h1>
-
-<div class="flex flex-col items-center mb-4">
-	<img alt='Sapper Logo' class="w-2/3 lg:w-1/3" src='sapper-logo.svg'>
-	<img alt='Tailwind Logo' class="w-2/3 lg:w-1/3" src='tailwind-logo.svg'>
+<script>
+	function stats(event) {
+		if(event.keyCode == 13) {
+			const username = event.currentTarget.value
+			if(username.trim().length > 0) {
+				window.location = `/stats/${username}`
+			}
+		}
+	}
+</script>
+<div class="h-screen flex flex-col items-center justify-center">
+  <h1 class="text-5xl mb-4 text-white">Your year on DEV</h1>
+  <div class="max-w-xl w-full bg-gray-800 p-6 rounded">
+    <input type="text" on:keypress={stats} class="w-full p-2 rounded text-xl text-center" placeholder="Enter your DEV username" />
+  </div>
 </div>
-
-<p class="text-center"><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
