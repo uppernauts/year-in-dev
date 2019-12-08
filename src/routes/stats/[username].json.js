@@ -4,7 +4,7 @@ export async function get(req, res, next) {
     const { username } = req.params;
 
     try {
-        const articles = await getArticles(username);
+        const articles = await getArticles(username, 2019);
 
         const stats = {
             totalArticles: articles.length,
@@ -12,7 +12,7 @@ export async function get(req, res, next) {
             totalComments: countComments(articles),
             totalReactions: countReactions(articles),
             mostUsedTags: getMostUsedTags(articles)
-        }
+        };
 
         res.writeHead(200, {
             'Content-Type': 'application/json'
