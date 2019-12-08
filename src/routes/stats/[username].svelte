@@ -20,29 +20,48 @@
   export let stats;
 </script>
 
+<style>
+	h1 {
+		font-family: 'Quicksand-Medium', sans-serif;
+	}
+</style>
+
 <svelte:head>
   <title>Stats</title>
 </svelte:head>
+
+
 {#if stats.totalArticles > 0}
-  <div class="w-full lg:w-4/5 mx-auto text-gray-200">
-    <div class="lg:flex mb-4">
-      <UserCard {...stats.user} />
-      <ArticlesWritten totalArticles={stats.totalArticles} />
-    </div>
-    <div class="lg:flex mb-4">
-      <div class="w-full lg:w-2/3 mr-4 mb-4 lg:mb-0 flex flex-col">
-        <FeaturedArticle comments="25" reactions="50" />
-        <FeaturedTags mostUsedTags={stats.mostUsedTags} />
+  <div class="flex flex-col justify-center items-center h-screen text-white">
+    <h1 class="text-5xl mb-4">My 2019 in DEV</h1>
+    <div class="w-full lg:w-4/5 mx-auto text-gray-200">
+      <div class="lg:flex mb-4">
+        <UserCard {...stats.user} />
+        <ArticlesWritten totalArticles={stats.totalArticles} />
       </div>
-      <ArticleStats
-        totalReactions={stats.totalReactions}
-        totalComments={stats.totalComments} />
+      <div class="lg:flex mb-4">
+        <div class="w-full lg:w-2/3 mr-4 mb-4 lg:mb-0 flex flex-col">
+          <FeaturedArticle
+            title={stats.mostLikedArticle.title}
+            comments={stats.mostLikedArticle.comments_count}
+            reactions={stats.mostLikedArticle.positive_reactions_count} />
+          <FeaturedTags mostUsedTags={stats.mostUsedTags} />
+        </div>
+        <ArticleStats
+          totalReactions={stats.totalReactions}
+          totalComments={stats.totalComments} />
+      </div>
     </div>
+	<a href="/">Try with another username</a>
   </div>
 {:else}
-	<div class="flex flex-col h-screen justify-center items-center text-white w-1/2 mx-auto">
-		<i class="text-6xl fas fa-exclamation-triangle mb-4"></i>
-		<p class="text-2xl text-center mb-4">The user does not exist or they haven't written articles yet</p>
-		<a href="/">Try with other username</a>
-	</div>
+  <div
+    class="flex flex-col h-screen justify-center items-center text-white w-1/2
+    mx-auto">
+    <i class="text-6xl fas fa-exclamation-triangle mb-4" />
+    <p class="text-2xl text-center mb-4">
+      The user does not exist or they haven't written articles yet
+    </p>
+    <a href="/">Try with another username</a>
+  </div>
 {/if}

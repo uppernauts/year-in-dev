@@ -1,7 +1,5 @@
 <script>
   export let title;
-  export let description =
-    "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ";
   export let comments;
   export let reactions;
 </script>
@@ -21,9 +19,9 @@
 
 <div
   class="bg-gray-800 w-full p-8 rounded-lg mr-4 justify-center mb-4 flex flex-col flex-grow">
-  <h1 class="text-xl mb-4">THE ARTICLE WITH MOST REACTIONS</h1>
+  <h1 class="text-xl mb-4">ARTICLE OF THE YEAR</h1>
   <div class="body">
-    <p class="text-lg md:text-2xl elipsis">{description}</p>
+    <p class="text-lg md:text-2xl elipsis">{title}</p>
     <div class="flex mt-2 text-3xl">
       <p class="mr-4">
         <i class="far fa-comments" />

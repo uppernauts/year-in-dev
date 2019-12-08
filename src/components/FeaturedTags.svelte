@@ -13,7 +13,7 @@
   <h1 class="text-xl mb-4">MOST USED TAGS</h1>
   <div class="flex flex-wrap">
     {#each mostUsedTags as tag}
-      <div class="bg-teal-500 px-4 py-2 rounded mr-2 mb-2">#{tag}</div>
+      <p class="bg-teal-500 px-4 py-2 rounded mr-2 mb-2 text-xl">#{tag}</p>
     {/each}
   </div>
 </div>

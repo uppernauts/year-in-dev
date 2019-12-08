@@ -2,7 +2,11 @@
 	export let name
 	export let username
 	export let profile_image
-	const profileUrl = `https://dev.to/{username}`
+	const profileUrl = `https://dev.to/${username}`
+
+	function goToProfile() {
+		window.open(profileUrl)
+	}
 </script>
 
 <style>
@@ -11,10 +15,10 @@
 	}
 </style>
 
-<header class="bg-gray-800 w-full lg:w-2/3 flex p-8 rounded-lg mr-4 items-center justify-center mb-4 lg:mb-0">
+<header on:click={goToProfile} class="bg-gray-800 w-full lg:w-2/3 flex p-8 rounded-lg mr-4 items-center mb-4 lg:mb-0 cursor-pointer">
 	<img class="w-24 md:w-40 rounded-full mr-4" src={profile_image} alt="profile-image">
 	<div>
-		<a href={profileUrl}><h1 class="text-xl md:text-3xl mb-2">{name}</h1></a>
+		<h1 class="text-xl md:text-3xl mb-2">{name}</h1>
 		<h3 class="text-md md:text-xl">@{username}</h3>
 	</div>
 </header>
