@@ -15,7 +15,6 @@ export async function get(req, res, next) {
             mostLikedArticle: getMostLikedArticle(articles)
         };
 
-        console.log(stats);
         res.writeHead(200, {
             'Content-Type': 'application/json'
         });
