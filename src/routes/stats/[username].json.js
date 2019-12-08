@@ -32,6 +32,12 @@ export async function get(req, res, next) {
     }
 }
 
+/**
+ * Get the user data from the first item article's array.
+ * If the user didn't write any articles, return only the username.
+ * @param {string} username 
+ * @param {any[]} articles 
+ */
 const getUserData = (username, articles) => {
     if (articles.length == 0) {
         return {
@@ -42,18 +48,30 @@ const getUserData = (username, articles) => {
     return articles[0].user;
 }
 
+/**
+ * Count the comments from every article.
+ * @param {any[]} articles 
+ */
 const countComments = (articles) => {
     return articles
         .map(a => a.comments_count)
         .reduce((sum, val) => sum + val, 0);
 }
 
+/**
+ * Count the reactions from every article.
+ * @param {any[]} articles 
+ */
 const countReactions = (articles) => {
     return articles
         .map(a => a.positive_reactions_count)
         .reduce((sum, val) => sum + val, 0);
 }
 
+/**
+ * Get the 3 most used tags.
+ * @param {any[]} articles 
+ */
 const getMostUsedTags = (articles) => {
     const mapTags = articles
         .map(a => a.tag_list);
