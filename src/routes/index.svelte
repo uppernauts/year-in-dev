@@ -6,7 +6,7 @@
 		if(event.keyCode == 13) {
 			const username = event.currentTarget.value
 			if(username.trim().length > 0) {
-				window.location = `/stats/${username}`
+				window.location = `/dashboard/${username}`
 			}
 		}
 	}
