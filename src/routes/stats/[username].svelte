@@ -32,7 +32,7 @@
 
 
 {#if stats.totalArticles > 0}
-  <div class="flex flex-col justify-center items-center h-screen text-white">
+  <div class="flex flex-col justify-center items-center min-h-screen text-white">
     <h1 class="text-5xl mb-4">My 2019 in DEV</h1>
     <div class="w-full lg:w-4/5 mx-auto text-gray-200">
       <div class="lg:flex mb-4">
