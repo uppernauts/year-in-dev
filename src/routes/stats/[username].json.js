@@ -11,9 +11,11 @@ export async function get(req, res, next) {
             user: getUserData(username, articles),
             totalComments: countComments(articles),
             totalReactions: countReactions(articles),
-            mostUsedTags: getMostUsedTags(articles)
+            mostUsedTags: getMostUsedTags(articles),
+            mostLikedArticle: getMostLikedArticle(articles)
         };
 
+        console.log(stats);
         res.writeHead(200, {
             'Content-Type': 'application/json'
         });
@@ -92,4 +94,17 @@ const getMostUsedTags = (articles) => {
         .sort((tagA, tagB) => tagB.countTag - tagA.countTag)
         .slice(0, 3)
         .map(t => t.tag);
+}
+
+/**
+ * Get the article with the most positive reactions.
+ * @param {any[]} articles 
+ */
+const getMostLikedArticle = (articles) => {
+    if (articles.length == 0)
+        return null;
+
+    return articles
+        .sort((articleA, articleB) => articleB.positive_reactions_count - articleA.positive_reactions_count)
+    [0];
 }
