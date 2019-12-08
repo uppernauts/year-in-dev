@@ -14,8 +14,6 @@ export async function get(req, res, next) {
             mostUsedTags: getMostUsedTags(articles)
         }
 
-        console.log(stats);
-
         res.writeHead(200, {
             'Content-Type': 'application/json'
         });
