@@ -43,6 +43,7 @@
         <div class="w-full lg:w-2/3 mr-4 mb-4 lg:mb-0 flex flex-col">
           <FeaturedArticle
             title={stats.mostLikedArticle.title}
+            url={stats.mostLikedArticle.url}
             comments={stats.mostLikedArticle.comments_count}
             reactions={stats.mostLikedArticle.positive_reactions_count} />
           <FeaturedTags mostUsedTags={stats.mostUsedTags} />

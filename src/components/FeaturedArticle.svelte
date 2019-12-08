@@ -1,5 +1,6 @@
 <script>
   export let title;
+  export let url;
   export let comments;
   export let reactions;
 </script>
@@ -18,10 +19,13 @@
 </style>
 
 <div
-  class="bg-gray-800 w-full p-8 rounded-lg mr-4 justify-center mb-4 flex flex-col flex-grow">
+  class="bg-gray-800 w-full p-8 rounded-lg mr-4 justify-center mb-4 flex
+  flex-col flex-grow">
   <h1 class="text-xl mb-4">ARTICLE OF THE YEAR</h1>
   <div class="body">
-    <p class="text-lg md:text-2xl elipsis">{title}</p>
+	<a class="text-lg md:text-2xl elipsis" href={url} target="_blank">
+		{title}
+	</a>
     <div class="flex mt-2 text-3xl">
       <p class="mr-4">
         <i class="far fa-comments" />
