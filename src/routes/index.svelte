@@ -6,9 +6,10 @@
 
 	function stats(event) {
 		if(event.keyCode == 13) {
-			const username = event.currentTarget.value
+			let username = event.currentTarget.value
 			if(username.trim().length > 0) {
-				goto(`/stats/${username.toLowerCase()}`)
+				username = username.toLowerCase().replace("@","")
+				goto(`/stats/${username}`)
 			}
 		}
 	}
