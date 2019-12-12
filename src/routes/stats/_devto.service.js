@@ -7,7 +7,7 @@ const request = require("request-promise");
  */
 export const getArticles = async (username, year) => {
 
-    const apiURL = `https://dev.to/api/articles?username=${username}&state=all`;
+    const apiURL = `https://dev.to/api/articles?username=${username}&state=all&page=1`;
 
     try {
         const articles = await request.get(apiURL);
