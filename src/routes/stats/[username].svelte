@@ -28,7 +28,13 @@
 </style>
 
 <svelte:head>
-  <title>Stats</title>
+  <title>My year in DEV</title>
+  <meta name="title" content={stats.metadata.title}>
+	<meta name="description" content={stats.metadata.description}>
+  <meta name="twitter:title" content={stats.metadata.title}>
+	<meta name="twitter:description" content={stats.metadata.description}>
+  <meta name="og:title" content={stats.metadata.title}>
+  <meta name="og:description" content={stats.metadata.description}>
 </svelte:head>
 
 {#if stats.totalArticles > 0}

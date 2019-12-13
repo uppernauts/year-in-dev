@@ -18,6 +18,9 @@ export async function get(req, res, next) {
         const tweetIntent = buildTweet(stats);
         stats.tweetIntent = tweetIntent;
 
+        const metadata = buildMetadata(stats);
+        stats.metadata = metadata;
+
         res.writeHead(200, {
             'Content-Type': 'application/json'
         });
@@ -116,7 +119,7 @@ const getMostLikedArticle = (articles) => {
  * @param {any} stats Current user's stats.
  */
 const buildTweet = (stats) => {
-    const tags = stats.mostUsedTags.map(t => `\#${t}`).join(", ");
+    const tags = stats.mostUsedTags.map(t => `\#${t}`).join(" ");
     
     const tweetMessage = `My year in DEV:\n\n` + 
     `I wrote ${stats.totalArticles} articles, received ${stats.totalComments} comments and ${stats.totalReactions} reactions.\n\n` +
@@ -127,6 +130,17 @@ const buildTweet = (stats) => {
     const tweetUrl = `https://twitter.com/intent/tweet?text=${encodedMessage}&url=https://year-in-dev.cephhi.com/stats/${stats.user.username}&hashtags=MyYearInDev,DEVcommunity`;
 
     return tweetUrl;
+}
+
+/**
+ * Builds social metadata customized with user data to use in social media cards.
+ * @param {any} stats 
+ */
+const buildMetadata = (stats) => {
+    return {
+        title: `@${stats.user.username}'s 2019 stats`,
+        description: `Click to see ${stats.user.name}'s DEV.to 2019 highlights and check your own!`
+    };
 }
 
 /**
