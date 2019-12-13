@@ -21,8 +21,8 @@ npm run dev
 ## Mainteiners
 This project is mainteined by:
 
-- @mauro-codes
-- @pawap90
+- [@mauro-codes](https://github.com/mauro-codes)
+- [@pawap90](https://github.com/pawap90)
 
 ## Collaborators
 Big shout-out to our collaborators:
