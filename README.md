@@ -18,8 +18,8 @@ npm run build
 npm run dev
 ```
 
-## Mainteiners
-This project is mainteined by:
+## Maintainers
+This project is maintained by:
 
 - [@mauro-codes](https://github.com/mauro-codes)
 - [@pawap90](https://github.com/pawap90)
