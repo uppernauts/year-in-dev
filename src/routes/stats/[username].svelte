@@ -19,10 +19,6 @@
   import FeaturedTags from "../../components/FeaturedTags.svelte";
 
   export let stats;
-
-  const tags = stats.mostUsedTags.map(t => `\#${t}`).join(", ");
-  const tweet = `My year in DEV: I wrote ${stats.totalArticles} articles. Received ${stats.totalComments} comments and ${stats.totalReactions} reactions. My favorite tags were ${tags}.`;
-  const tweetUrl = `https://twitter.com/intent/tweet?text=${tweet}&url=https://year-in-dev.cephhi.com/stats/${stats.user.username}&hashtags=MyYearInDev,DEVcommunity`;
 </script>
 
 <style>
@@ -42,7 +38,7 @@
       <h1 class="text-5xl mr-2 mb-2">My 2019 in DEV</h1>
       <div class="flex items-center justify-center">
         <p class="mr-2">Share my stats:</p>
-        <a class="twitter-share-button" data-size="large" href={tweetUrl}>
+        <a class="twitter-share-button" data-size="large" href={stats.tweetIntent}>
           Tweet
         </a>
       </div>

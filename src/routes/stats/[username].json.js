@@ -12,8 +12,11 @@ export async function get(req, res, next) {
             totalComments: countComments(articles),
             totalReactions: countReactions(articles),
             mostUsedTags: getMostUsedTags(articles),
-            mostLikedArticle: getMostLikedArticle(articles)
+            mostLikedArticle: getMostLikedArticle(articles),
         };
+
+        const tweetIntent = buildTweet(stats);
+        stats.tweetIntent = tweetIntent;
 
         res.writeHead(200, {
             'Content-Type': 'application/json'
@@ -106,4 +109,33 @@ const getMostLikedArticle = (articles) => {
     return articles
         .sort((articleA, articleB) => articleB.positive_reactions_count - articleA.positive_reactions_count)
     [0];
+}
+
+/**
+ * Generates a tweet intent containing the most important info extracted from the user's stats.
+ * @param {any} stats Current user's stats.
+ */
+const buildTweet = (stats) => {
+    const tags = stats.mostUsedTags.map(t => `\#${t}`).join(", ");
+    
+    const tweetMessage = `My year in DEV: I wrote ${stats.totalArticles} articles. 
+    Received ${stats.totalComments} comments and ${stats.totalReactions} reactions. 
+    My favorite tags were ${tags}.`;
+
+    const encodedMessage = encodeURIfix(tweetMessage);
+
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodedMessage}&url=https://year-in-dev.cephhi.com/stats/${stats.user.username}&hashtags=MyYearInDev,DEVcommunity`;
+
+    return tweetUrl;
+}
+
+/**
+ * Encodes string to be able to send it as query param.
+ * @param {String} str String to encode
+ */
+function encodeURIfix (str) {
+    return encodeURIComponent(str)
+        .replace(/!/g, '%21')
+        .replace(/\(/g, '%28')
+        .replace(/\)/g, '%29');
 }
