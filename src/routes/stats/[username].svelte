@@ -37,9 +37,10 @@
     <div class="mb-4">
       <h1 class="text-5xl mr-2 mb-2">My 2019 in DEV</h1>
       <div class="flex items-center justify-center">
-        <p class="mr-2">Share my stats:</p>
-        <a class="twitter-share-button" data-size="large" href={stats.tweetIntent}>
-          Tweet
+        <p class="mr-2">Share your stats</p>
+        <a class="bg-blue-500 px-2 py-1 rounded" data-size="large" href={stats.tweetIntent}>
+          <i class="fab fa-twitter mr-1"></i>
+		  Share
         </a>
       </div>
     </div>
