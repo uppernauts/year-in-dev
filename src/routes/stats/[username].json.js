@@ -118,11 +118,11 @@ const getMostLikedArticle = (articles) => {
 const buildTweet = (stats) => {
     const tags = stats.mostUsedTags.map(t => `\#${t}`).join(", ");
     
-    const tweetMessage = `My year in DEV: I wrote ${stats.totalArticles} articles. 
-    Received ${stats.totalComments} comments and ${stats.totalReactions} reactions. 
-    My favorite tags were ${tags}.`;
+    const tweetMessage = `My year in DEV:\n\n` + 
+    `I wrote ${stats.totalArticles} articles, received ${stats.totalComments} comments and ${stats.totalReactions} reactions.\n\n` +
+    `Favorite tags: ${tags}.\n\n`;
 
-    const encodedMessage = encodeURIfix(tweetMessage);
+    const encodedMessage = encodeURIfix(tweetMessage.replace('\t', ''));
 
     const tweetUrl = `https://twitter.com/intent/tweet?text=${encodedMessage}&url=https://year-in-dev.cephhi.com/stats/${stats.user.username}&hashtags=MyYearInDev,DEVcommunity`;
 
