@@ -2,6 +2,10 @@
 	export let name
 	export let username
 	export let profile_image
+	export let twitter_username
+	export let github_username
+	export let website_url
+	export let profile_image_90
 	const profileUrl = `https://dev.to/${username}`
 
 	function goToProfile() {
