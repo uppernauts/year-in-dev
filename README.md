@@ -18,6 +18,21 @@ npm run build
 npm run dev
 ```
 
+## Mainteiners
+This project is mainteined by:
+
+- @mauro-codes
+- @pawap90
+
+## Collaborators
+Big shout-out to our collaborators:
+
+- [@realabbas](https://github.com/realabbas)  🐛💻
+- [@saurabhdaware](https://github.com/saurabhdaware)  ✨
+- [@dennislwm](https://github.com/dennislwm)  🐛
+
+> Emoji reference: 💻-> Pull request merged | ✨-> Issue (enhancement) | 🐛-> Issue (bug) 
+
 ## Official docs
 - Svelte docs: [svelte.dev/docs](https://svelte.dev/docs)
 - Sapper docs: [sapper.svelte.dev/docs](https://sapper.svelte.dev/docs)
