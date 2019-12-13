@@ -17,23 +17,36 @@
   import FeaturedArticle from "../../components/FeaturedArticle.svelte";
   import ArticleStats from "../../components/ArticleStats.svelte";
   import FeaturedTags from "../../components/FeaturedTags.svelte";
+
   export let stats;
+
+  const tags = stats.mostUsedTags.map(t => `\#${t}`).join(", ");
+  const tweet = `My year in DEV: I wrote ${stats.totalArticles} articles. Received ${stats.totalComments} comments and ${stats.totalReactions} reactions. My favorite tags were ${tags}.`;
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${tweet}&url=https://year-in-dev.cephhi.com/stats/${stats.user.username}&hashtags=MyYearInDev,DEVcommunity`;
 </script>
 
 <style>
-	h1 {
-		font-family: 'Quicksand-Medium', sans-serif;
-	}
+  h1 {
+    font-family: "Quicksand-Medium", sans-serif;
+  }
 </style>
 
 <svelte:head>
   <title>Stats</title>
 </svelte:head>
 
-
 {#if stats.totalArticles > 0}
-  <div class="flex flex-col justify-center items-center min-h-screen text-white">
-    <h1 class="text-5xl mb-4">My 2019 in DEV</h1>
+  <div
+    class="flex flex-col justify-center items-center min-h-screen text-white">
+    <div class="mb-4">
+      <h1 class="text-5xl mr-2 mb-2">My 2019 in DEV</h1>
+      <div class="flex items-center justify-center">
+        <p class="mr-2">Share my stats:</p>
+        <a class="twitter-share-button" data-size="large" href={tweetUrl}>
+          Tweet
+        </a>
+      </div>
+    </div>
     <div class="w-full lg:w-4/5 mx-auto text-gray-200">
       <div class="lg:flex mb-4">
         <UserCard {...stats.user} />
@@ -53,12 +66,12 @@
           totalComments={stats.totalComments} />
       </div>
     </div>
-	<a href="/">Try with another username</a>
+    <a href="/">Try with another username</a>
   </div>
 {:else}
   <div
-    class="flex flex-col min-h-screen justify-center items-center text-white w-1/2
-    mx-auto">
+    class="flex flex-col min-h-screen justify-center items-center text-white
+    w-1/2 mx-auto">
     <i class="text-6xl fas fa-exclamation-triangle mb-4" />
     <p class="text-2xl text-center mb-4">
       The user does not exist or they haven't written articles yet
