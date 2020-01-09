@@ -6,7 +6,7 @@ Try it yourself! 👉 [My year in DEV](https://year-in-dev.cephhi.com/)
 
 ## Tools
 
-This web app was build using Svelte with Sapper and Tailwind CSS. If you're interested in trying out this combo, check out this boilerplate [mauro-codes/sapper-tailwindcss-boilerplate
+This web app was built using Svelte with Sapper and Tailwind CSS. If you're interested in trying out this combo, check out this boilerplate [mauro-codes/sapper-tailwindcss-boilerplate
 ](https://github.com/mauro-codes/sapper-tailwindcss-boilerplate).
 
 ## Running the project locally
