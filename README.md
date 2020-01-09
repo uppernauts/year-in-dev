@@ -1,6 +1,6 @@
 # My year in DEV
 
-A tool tool that displays a summary of your DEV.to blog's stats!
+A tool that displays a summary of your DEV.to blog's stats!
 
 Try it yourself! 👉 [My year in DEV](https://year-in-dev.cephhi.com/)
 
