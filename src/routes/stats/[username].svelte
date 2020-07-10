@@ -109,4 +109,3 @@
     <a href="/">Or try with another username</a>
   </div>
 {/if}
-<p class="text-white">{selectedYear}</p>
