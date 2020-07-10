@@ -2,9 +2,11 @@ import { getArticles } from './_devto.service';
 
 export async function get(req, res, next) {
     const { username } = req.params;
+    
+    const { year = 2020 } = req.query;
 
     try {
-        const articles = await getArticles(username, 2019);
+        const articles = await getArticles(username, year);
 
         const stats = {
             totalArticles: articles.length,
@@ -15,10 +17,10 @@ export async function get(req, res, next) {
             mostLikedArticle: getMostLikedArticle(articles),
         };
 
-        const tweetIntent = buildTweet(stats);
+        const tweetIntent = buildTweet(stats, year);
         stats.tweetIntent = tweetIntent;
 
-        const metadata = buildMetadata(stats);
+        const metadata = buildMetadata(stats, year);
         stats.metadata = metadata;
 
         res.writeHead(200, {
@@ -118,7 +120,7 @@ const getMostLikedArticle = (articles) => {
  * Generates a tweet intent containing the most important info extracted from the user's stats.
  * @param {any} stats Current user's stats.
  */
-const buildTweet = (stats) => {
+const buildTweet = (stats, year) => {
     const tags = stats.mostUsedTags.map(t => `\#${t}`).join(" ");
     
     const tweetMessage = `My year in DEV:\n\n` + 
@@ -127,7 +129,7 @@ const buildTweet = (stats) => {
 
     const encodedMessage = encodeURIfix(tweetMessage.replace('\t', ''));
 
-    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodedMessage}&url=https://year-in-dev.cephhi.com/stats/${stats.user.username}&hashtags=MyYearInDev,DEVcommunity`;
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodedMessage}&url=https://year-in-dev.cephhi.com/stats/${stats.user.username}?year=${year}&hashtags=MyYearInDev,DEVcommunity`;
 
     return tweetUrl;
 }
@@ -136,10 +138,10 @@ const buildTweet = (stats) => {
  * Builds social metadata customized with user data to use in social media cards.
  * @param {any} stats 
  */
-const buildMetadata = (stats) => {
+const buildMetadata = (stats, year) => {
     return {
-        title: `@${stats.user.username}'s 2019 stats`,
-        description: `Click to see ${stats.user.name}'s DEV.to 2019 highlights and check your own!`
+        title: `@${stats.user.username}'s ${year} stats`,
+        description: `Click to see ${stats.user.name}'s DEV.to ${year} highlights and check your own!`
     };
 }
 

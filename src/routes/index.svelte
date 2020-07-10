@@ -16,11 +16,11 @@
 <svelte:head>
   <title>Your year in DEV</title>
   <meta name="title" content="Your year in DEV" />
-  <meta name="description" content='Find out your DEV.to 2019 highlights!' />
+  <meta name="description" content='Find out your DEV.to highlights of the year!' />
   <meta name="twitter:title" content="Your year in DEV" />
-  <meta name="twitter:description" content="Find out your DEV.to 2019 highlights!" />
+  <meta name="twitter:description" content="Find out your DEV.to highlights of the year!" />
   <meta name="og:title" content="Your year in DEV" />
-  <meta name="og:description" content="Find out your DEV.to 2019 highlights!" />
+  <meta name="og:description" content="Find out your DEV.to highlights of the year!" />
 </svelte:head>
 
 <div class="min-h-screen flex flex-col items-center justify-center">
