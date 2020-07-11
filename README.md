@@ -18,6 +18,17 @@ npm run build
 npm run dev
 ```
 
+## Deploy (with PM2)
+Generate the build running:
+```sh
+npm run build
+```
+Start the PM2 process like so:
+```sh
+pm2 start npm --name "My year in DEV" -- start
+```
+> This will run `npm run start` which will start the server.
+
 ## Maintainers
 This project is maintained by:
 
